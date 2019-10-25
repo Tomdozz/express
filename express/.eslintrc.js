@@ -24,6 +24,7 @@ module.exports = {
     }
   },
   // add your custom rules here
+
   rules: {
     // don't require .vue extension when importing
     'import/extensions': ['error', 'always', {

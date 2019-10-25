@@ -4,8 +4,14 @@ const cors = require('cors');
 const morgan = require('morgan');
 
 const app = express();
-app.use(morgan('combine'));
+app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(cors());
 
-app.listen(process.env.ROOT || 8081);
+app.post('/register', (req,res) =>{
+    res.send({
+        message: `Hello ${req.body.email} your user was registerd, Have fun`
+    })
+})
+//app.listen(process.env.ROOT || 8081);
+app.listen(8081);
