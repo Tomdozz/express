@@ -1,7 +1,10 @@
-module.exports = (app) => {
-    app.post('/register', (req, res) => {
-        res.send({
-            message: `Hello ${req.body.email} your user was registerd, Have fun`
-        })
-    })
-}
+const AuthenticationController = require("./controllers/AuthenticateContorller");
+const AuthenticateContorllerPolicies = require("./policies/AuthenticationControllerPolicy");
+
+module.exports = app => {
+  app.post(
+    "/register",
+    AuthenticateContorllerPolicies.register,
+    AuthenticationController.register
+  );
+};

@@ -3,8 +3,8 @@
     <div class="loginform" v-if="isLogin">
       <h1>Login to Lifearray</h1>
       <p>
-        Not registered yet?,
-        <a @click="displayRegister">register here</a>
+        Not registered yet?
+        <a @click="displayRegister">Register here</a>
       </p>
       <div class="inputs">
         <input
@@ -14,6 +14,7 @@
           placeholder="ex. yourname@gmail.com"
           v-model="loginEmail"
         />
+        <p v-if="!loginEmailIsValid" class="error-messag">Enter a valid emailaddress</p>
       </div>
       <div class="inputs">
         <input
@@ -23,9 +24,10 @@
           placeholder="***"
           v-model="loginPassword"
         />
+        <p v-if="!loginPasswordIsValid" class="error-messag">Wrong password</p>
       </div>
-      <button class="button" @click="register">Login</button>
-      <p class="forgotPassword">Forgot your password? no worries, we help you!</p>
+      <button class="button" @click="login">Login</button>
+      <p class="forgotPassword">Forgot your password? No worries, we will help you!</p>
     </div>
     <div class="registerform" v-if="!isLogin">
       <h1>Create account</h1>
@@ -44,7 +46,7 @@
           type="password"
           name="lastName"
           placeholder="LastName"
-          v-model="registerLasttName"
+          v-model="registerLastName"
         />
       </div>
       <div class="inputs">
@@ -65,6 +67,7 @@
           v-model="registerPassword"
         />
       </div>
+      <div class="error" v-html="error"/>
       <button class="button" @click="register">Register</button>
     </div>
   </div>
@@ -82,16 +85,33 @@ export default {
       loginPassword: "",
       registerFirstName: "",
       registerLastName: "",
-      isLogin: true
+      isLogin: true,
+      error: null
     };
+  },
+  computed: {
+    loginEmailIsValid() {
+      var re = /\S+@\S+\.\S+/;
+      return re.test(this.loginEmail);
+    },
+    loginPasswordIsValid() {
+      //add logic to check if password is correct
+      return true;
+    }
   },
   methods: {
     async register() {
-      const response = await AuthenticationService.register({
-        email: this.email,
-        password: this.password
-      });
-      console.log(response.data);
+      try {
+        const response = await AuthenticationService.register({
+          email: this.registerEmail,
+          password: this.registerPassword
+        });
+      } catch (error) {
+        this.error = error.response.data.error
+      }
+    },
+    async login() {
+      //add logic to login
     },
     displayRegister() {
       this.isLogin = !this.isLogin;
@@ -106,8 +126,8 @@ export default {
 .maincontent {
   position: fixed;
   top: 50%;
-  left: 20%;
-  transform: translate(-0%, -50%);
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .inputs {
@@ -136,8 +156,19 @@ p a {
   cursor: pointer;
 }
 
-.forgotPassword{
+.forgotPassword {
   font-size: 12px;
+}
+
+.error-messag {
+  font-size: 10px;
+  color: crimson;
+  opacity: 0.5;
+}
+
+.error{
+  color: crimson;
+  opacity: 0.5;
 }
 @media screen and(max-width:480px) {
   /* center main content */
