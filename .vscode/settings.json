@@ -1,0 +1,8 @@
+{
+    "prettier.singleQuote": true,
+    "prettier.jsxSingleQuote": true,
+    "prettier.requireConfig": true,
+    "prettier.trailingComma": "es5",
+    "vetur.format.defaultFormatter.js": "prettier-eslint",
+    "vetur.format.defaultFormatter.ts": "prettier-tslint"
+}

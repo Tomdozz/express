@@ -9,6 +9,9 @@ module.exports = {
             host: 'localhost',
             storage: './lifearray.sqlite'
         }
+    },
+    authentication:{
+        jwtSecret: 'secret'
     }
 }
 
@@ -23,5 +26,8 @@ module.exports = {
             host: process.env.HOST || 'localhost',
             storage: './lifearray.sqlite'
         }
+    },
+    authentication:{
+        jwtSecret: process.env.JWT_SECRET
     }
 */
