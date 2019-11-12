@@ -1,18 +1,14 @@
 <template>
   <div>
     <Navigation></Navigation>
-    <div>
-      <div class="container"></div>
-
-      <!-- <picture>
-        <img
-          src="../assets/ig-1.jpg"
-          alt="Man with a dog"
-          style="object-fit: cover;"
-          loading="lazy"
-          sizes="100vw"
-        />
-      </picture>-->
+    <div class="main">
+      <div class="backimage">
+        <img src="../assets/netset-57.jpg" alt="backdrop" />
+      </div>
+      <div class="mainContent">
+        <h2 class="title-sm">Tom Andersson</h2>
+        <h1 class="title-bg">LifeArray</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -23,7 +19,7 @@ export default {
   name: "FirstPage",
   data() {
     return {};
-  },
+  }
   // components: {
   //   Navigation
   // }
@@ -46,5 +42,27 @@ li {
 }
 a {
   color: #42b983;
+}
+.main{
+  height: 100vh;
+}
+.mainContent {
+  position: relative;
+  top: 50%;
+  left: 10%;
+}
+.backimage {
+  position: fixed;
+  width: 100vw;
+  z-index: -5000;
+}
+.backimage img {
+  width: 100%;
+}
+.title-sm {
+  text-align: left;
+}
+.title-bg {
+  text-align: left;
 }
 </style>

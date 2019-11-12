@@ -1,74 +1,77 @@
 <template>
-  <div class="maincontent">
-    <div class="loginform" v-if="isLogin">
-      <h1>Login to Lifearray</h1>
-      <p>
-        Not registered yet?
-        <a @click="displayRegister">Register here</a>
-      </p>
-      <div class="inputs">
-        <input
-          class="standard-input"
-          type="email"
-          name="loginEmail"
-          placeholder="ex. yourname@gmail.com"
-          v-model="loginEmail"
-        />
-        <p v-if="!loginEmailIsValid" class="error-messag">Enter a valid emailaddress</p>
+  <div>
+    <Navigation></Navigation>
+    <div class="maincontent">
+      <div class="loginform" v-if="isLogin">
+        <h1>Login to Lifearray</h1>
+        <p>
+          Not registered yet?
+          <a @click="displayRegister">Register here</a>
+        </p>
+        <div class="inputs">
+          <input
+            class="standard-input"
+            type="email"
+            name="loginEmail"
+            placeholder="ex. yourname@gmail.com"
+            v-model="loginEmail"
+          />
+          <p v-if="!loginEmailIsValid" class="error-messag">Enter a valid emailaddress</p>
+        </div>
+        <div class="inputs">
+          <input
+            class="standard-input"
+            type="password"
+            name="loginPassword"
+            placeholder="***"
+            v-model="loginPassword"
+          />
+          <p v-if="!loginPasswordIsValid" class="error-messag">Wrong password</p>
+        </div>
+        <button class="button" @click="login">Login</button>
+        <p class="forgotPassword">Forgot your password? No worries, we will help you!</p>
       </div>
-      <div class="inputs">
-        <input
-          class="standard-input"
-          type="password"
-          name="loginPassword"
-          placeholder="***"
-          v-model="loginPassword"
-        />
-        <p v-if="!loginPasswordIsValid" class="error-messag">Wrong password</p>
+      <div class="registerform" v-if="!isLogin">
+        <h1>Create account</h1>
+        <div class="inputs">
+          <input
+            class="standard-input"
+            type="name"
+            name="firstName"
+            placeholder="FirstName"
+            v-model="registerFirstName"
+          />
+        </div>
+        <div class="inputs">
+          <input
+            class="standard-input"
+            type="password"
+            name="lastName"
+            placeholder="LastName"
+            v-model="registerLastName"
+          />
+        </div>
+        <div class="inputs">
+          <input
+            class="standard-input"
+            type="email"
+            name="email"
+            placeholder="Email Address"
+            v-model="registerEmail"
+          />
+        </div>
+        <div class="inputs">
+          <input
+            class="standard-input"
+            type="password"
+            name="password"
+            placeholder="Password"
+            v-model="registerPassword"
+          />
+        </div>
+        <div class="error" v-html="error" />
+        <button class="button" @click="register">Register</button>
       </div>
-      <button class="button" @click="login">Login</button>
-      <p class="forgotPassword">Forgot your password? No worries, we will help you!</p>
-    </div>
-    <div class="registerform" v-if="!isLogin">
-      <h1>Create account</h1>
-      <div class="inputs">
-        <input
-          class="standard-input"
-          type="name"
-          name="firstName"
-          placeholder="FirstName"
-          v-model="registerFirstName"
-        />
-      </div>
-      <div class="inputs">
-        <input
-          class="standard-input"
-          type="password"
-          name="lastName"
-          placeholder="LastName"
-          v-model="registerLastName"
-        />
-      </div>
-      <div class="inputs">
-        <input
-          class="standard-input"
-          type="email"
-          name="email"
-          placeholder="Email Address"
-          v-model="registerEmail"
-        />
-      </div>
-      <div class="inputs">
-        <input
-          class="standard-input"
-          type="password"
-          name="password"
-          placeholder="Password"
-          v-model="registerPassword"
-        />
-      </div>
-      <div class="error" v-html="error"/>
-      <button class="button" @click="register">Register</button>
     </div>
   </div>
 </template>
@@ -107,7 +110,7 @@ export default {
           password: this.registerPassword
         });
       } catch (error) {
-        this.error = error.response.data.error
+        this.error = error.response.data.error;
       }
     },
     async login() {
@@ -166,7 +169,7 @@ p a {
   opacity: 0.5;
 }
 
-.error{
+.error {
   color: crimson;
   opacity: 0.5;
 }
