@@ -1,5 +1,5 @@
 module.exports = {
-    port: 8081,
+    port: 8082,
     db: {
         database: 'lifearray',
         user: 'lifearray',

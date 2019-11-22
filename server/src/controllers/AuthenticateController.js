@@ -1,12 +1,12 @@
 const { User } = require('../models');
-const jwt = require('jsonwebtoken');
-const config = require('../config/config');
+const jwt = require('jsonwebtoken')
+const config = require('../config/config')
 
-function jwtSignUser(user) {
-  const ONE_WEEK = 60 * 60 * 24 * 7;
-  return jwt.sign(user, config.autentication.jwtSecret, {
+function jwtSignUser (user) {
+  const ONE_WEEK = 60 * 60 * 24 * 7
+  return jwt.sign(user, config.authentication.jwtSecret, {
     expiresIn: ONE_WEEK
-  });
+  })
 }
 
 module.exports = {
@@ -15,8 +15,9 @@ module.exports = {
       const user = await User.create(req.body);
       res.send(user.toJSON());
     } catch (err) {
+      console.log(err)
       res.status(400).send({
-        error: 'This emailaccount is alrady used.'
+        error: 'This emailaccount is already used.'
       });
     }
   },
@@ -34,11 +35,13 @@ module.exports = {
           error: 'The login information was incorrect'
         });
       }
-
-      const isPasswordValid = password == user.password;
       console.log(user.password)
-      console.log(isPasswordValid)
       console.log(password)
+      console.log("beforeisvalid")
+
+      const isPasswordValid = await user.comparePassword(password)
+      console.log(isPasswordValid)
+
       
       
       
@@ -49,6 +52,7 @@ module.exports = {
       }
 
       const userJson = user.toJSON();
+      console.log(userJson)
       res.send({
         user: userJson,
         token: jwtSignUser(userJson)
