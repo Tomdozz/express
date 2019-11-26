@@ -79,15 +79,14 @@ export default {
 }
 </script>
 
-<style>
-* {
-  margin: 0 !important;
-}
+<style lang="css" scoped>
+@import '../assets/global.css';
+
 #navbar {
   position: fixed;
   /* background-color: rgba(128, 128, 128, 0.171); */
   width: 100%;
-  height: 10vh;
+  height: var(--topnav-height);
 }
 #home {
   position: absolute;
