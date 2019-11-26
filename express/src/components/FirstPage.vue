@@ -17,8 +17,8 @@
 // import Navigation from "./Navigation";
 export default {
   name: "FirstPage",
-  data() {
-    return {};
+    data() {
+return {};
   }
   // components: {
   //   Navigation

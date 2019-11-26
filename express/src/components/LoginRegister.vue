@@ -16,7 +16,9 @@
             placeholder="ex. yourname@gmail.com"
             v-model="loginEmail"
           />
-          <p v-if="!loginEmailIsValid" class="error-messag">Enter a valid emailaddress</p>
+          <p v-if="!loginEmailIsValid" class="error-messag">
+            Enter a valid emailaddress
+          </p>
         </div>
         <div class="inputs">
           <input
@@ -26,10 +28,14 @@
             placeholder="***"
             v-model="loginPassword"
           />
-          <p v-if="!loginPasswordIsValid" class="error-messag">Wrong password</p>
+          <p v-if="!loginPasswordIsValid" class="error-messag">
+            Wrong password
+          </p>
         </div>
         <button class="button" @click="login">Login</button>
-        <p class="forgotPassword">Forgot your password? No worries, we will help you!</p>
+        <p class="forgotPassword">
+          Forgot your password? No worries, we will help you!
+        </p>
       </div>
       <div class="registerform" v-if="!isLogin">
         <h1>Create account</h1>
@@ -77,51 +83,50 @@
 </template>
 
 <script>
-import AuthenticationService from "@/services/AuthenticationService";
+import AuthenticationService from '@/services/AuthenticationService'
 
 export default {
   data() {
     return {
-      registerEmail: "",
-      registerPassword: "",
-      loginEmail: "",
-      loginPassword: "",
-      registerFirstName: "",
-      registerLastName: "",
+      registerEmail: '',
+      registerPassword: '',
+      loginEmail: '',
+      loginPassword: '',
+      registerFirstName: '',
+      registerLastName: '',
       isLogin: true,
       error: null
-    };
+    }
   },
   computed: {
     loginEmailIsValid() {
-      var re = /\S+@\S+\.\S+/;
-      return re.test(this.loginEmail);
+      var re = /\S+@\S+\.\S+/
+      return re.test(this.loginEmail)
     },
     loginPasswordIsValid() {
       //add logic to check if password is correct
-      return true;
+      return true
     }
   },
   methods: {
     async register() {
       try {
-        const response = await AuthenticationService.register({
+        await AuthenticationService.register({
           email: this.registerEmail,
           password: this.registerPassword
-        });
+        })
       } catch (error) {
-        this.error = error.response.data.error;
+        this.error = error.response.data.error
       }
     },
     async login() {
       //add logic to login
     },
     displayRegister() {
-      this.isLogin = !this.isLogin;
-      console.log("display register");
+      this.isLogin = !this.isLogin
     }
   }
-};
+}
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

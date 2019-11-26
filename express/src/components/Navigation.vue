@@ -1,7 +1,11 @@
 <template>
   <div id="navbar">
     <div id="home" @click="home">LifeArray</div>
-    <div id="burger" :class="{ 'active' : isBurgerActive }" @click.prevent="toggle">
+    <div
+      id="burger"
+      :class="{ active: isBurgerActive }"
+      @click.prevent="toggle"
+    >
       <slot>
         <button type="button" class="burger-button" title="Menu">
           <span class="burger-bar burger-bar--1"></span>
@@ -16,7 +20,9 @@
 
           <ul>
             <li v-for="item in items" :key="item.name">
-              <router-link class="menuEntry" :to="{ name: item.redirectTo}">{{item.title}}</router-link>
+              <router-link class="menuEntry" :to="{ name: item.redirectTo }">{{
+                item.title
+              }}</router-link>
             </li>
           </ul>
         </div>
@@ -26,54 +32,51 @@
 </template>
 
 <script>
-import menuEntries from "../staticdata/menuentries";
-import FirstPageVue from "./FirstPage.vue";
+import menuEntries from '../staticdata/menuentries'
 
 export default {
   computed: {
     items() {
       return [
         {
-          title: "Login",
-          redirectTo: "login",
-          additionalinformation: ""
+          title: 'Login',
+          redirectTo: 'login',
+          additionalinformation: ''
         },
         {
-          title: "About",
-          redirectTo: "login",
-          additionalinformation: ""
+          title: 'About',
+          redirectTo: 'login',
+          additionalinformation: ''
         },
         {
-          title: "Sign up",
-          redirectTo: "login",
-          additionalinformation: ""
+          title: 'Sign up',
+          redirectTo: 'login',
+          additionalinformation: ''
         },
         {
-          title: "Sign in",
-          redirectTo: "login",
-          additionalinformatio: ""
+          title: 'Sign in',
+          redirectTo: 'login',
+          additionalinformatio: ''
         }
-      ];
+      ]
     }
   },
-  mounted() {
-    console.log(this.$options.name + " component succesfully mounted");
-  },
+  mounted() {},
   data() {
     return {
       MenuEntries: menuEntries,
       isBurgerActive: false
-    };
+    }
   },
   methods: {
     toggle() {
-      this.isBurgerActive = !this.isBurgerActive;
+      this.isBurgerActive = !this.isBurgerActive
     },
     home() {
-      this.$router.push({ name: "FirstPage" });
+      this.$router.push({ name: 'FirstPage' })
     }
   }
-};
+}
 </script>
 
 <style>
@@ -108,7 +111,7 @@ button:focus {
 li {
   list-style-type: none;
 }
-.menuEntry{
+.menuEntry {
   text-decoration: none;
   color: black;
 }
@@ -126,11 +129,11 @@ li {
   transform-origin: top;
 }
 .menu_connector {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   top: 0;
-  transform: translateY(10px);  
+  transform: translateY(10px);
   transform: rotate(45deg);
   width: 55px;
   height: 55px;
@@ -204,7 +207,7 @@ li {
 /* #burger.active .burger-button {
         transform: rotate(-180deg);
     } */
-/* 
+/*
 #burger.active .burger-bar {
   background-color: green;
 } */

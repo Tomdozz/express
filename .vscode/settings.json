@@ -4,5 +4,7 @@
     "prettier.requireConfig": true,
     "prettier.trailingComma": "es5",
     "vetur.format.defaultFormatter.js": "prettier-eslint",
-    "vetur.format.defaultFormatter.ts": "prettier-tslint"
+    "vetur.format.defaultFormatter.ts": "prettier-tslint",
+    "editor.formatOnSave": true,
+    "eslint.autoFixOnSave": true
 }
