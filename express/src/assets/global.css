@@ -1,6 +1,10 @@
 * {
   margin: 0 !important;
-  --txt-color: #707070;
+  --txt-color: #0c0c0c;
+  /* --menuitem-bg-color: #707070; */
+  --menuitem-bg-color: rgba(128, 128, 128, 0.171);
+  --menuitem-bg-color-hover: rgba(128, 128, 128, 0.705);
   --icn-color: #707070;
   --topnav-height: 10vh;
+  --font-fam: Helvetica;
 }

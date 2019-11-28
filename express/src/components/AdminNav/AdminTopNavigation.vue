@@ -14,7 +14,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  data() {
+    return {
+      search: ''
+    }
+  }
+}
 </script>
 
 <style lang="css" scoped>
@@ -22,7 +28,8 @@ export default {}
 
 #navbar {
   position: fixed;
-  background-color: rgba(128, 128, 128, 0.171);
+  /* background-color: rgba(128, 128, 128, 0.171); */
+  background-color: var(--menuitem-bg-color);
   width: 100%;
   height: var(--topnav-height);
 }
