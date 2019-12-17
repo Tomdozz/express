@@ -60,11 +60,19 @@ export default {
   font-family: var(--font-fam);
 }
 .nav-item {
-  margin-top: 20px;
+  /* margin-top: 20px;
   max-width: 200px;
-  padding: 5px;
-  background-color: var(--menuitem-bg-color);
-  border-radius: 15px;
+  padding: 5px;*/
+
+  /* offset-x | offset-y | blur-radius | spread-radius | color */
+  box-shadow: 30px 30px 80px 1px rgba(55, 84, 170, 0.178),
+    -30px -30px 80px 1px #ffffff, inset 4px 4px 20px 1px #cccccc;
+  background-color: #f1f3f6;
+
+  /* background-color: var(--menuitem-bg-color); */
+  border-radius: 108px;
+  padding: 10px;
+  /* box-shadow: (30px 30px 80px 0px rgba(55, 84, 170, 0.1)); */
 }
 .nav-item:hover {
   background-color: var(--menuitem-bg-color-hover);
