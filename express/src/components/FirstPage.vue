@@ -5,17 +5,18 @@
       <!-- <div class="backimage"> -->
       <!-- <img src="../assets/netset-57.jpg" alt="backdrop" /> -->
 
-      <div id="scene">
-        <div data-depth="0.2">My first Layer!</div>
-        <div data-depth="0.6">My second Layer!</div>
-      </div>
-
-      <!-- <div class="parallax">
-        <div class="water water-layer4"></div>
-        <div class="water water-layer3"></div>
-        <div class="water water-layer2"></div>
-        <div class="water water-layer1"></div>
+      <!-- <div id="scene">
+        <div data-depth="0.2" class="parallax1">My first Layer!</div>
+        <div data-depth="0.6" class="parallax2">My second Layer!</div>
       </div> -->
+      <ul id="scene">
+        <li class="layer">
+          <div class="birds">yo</div>
+        </li>
+        <li class="layer">
+          <div class="birds1">yo</div>
+        </li>
+      </ul>
 
       <!-- </div>
       <div class="mainContent">
@@ -27,7 +28,6 @@
 </template>
 
 <script>
-import $ from 'jquery'
 import Parallax from 'parallax-js'
 // import Navigation from "./Navigation";
 export default {
@@ -42,32 +42,25 @@ export default {
     var scene = document.getElementById('scene')
     var parallaxInstance = new Parallax(scene)
     parallaxInstance.friction(0.2, 0.2)
-
-    // var currentX = ''
-    // var currentY = ''
-    // var movementConstant = 0.015
-    // $(document).mousemove(function(e) {
-    //   if (currentX == '') currentX = e.pageX
-    //   var xdiff = e.pageX - currentX
-    //   currentX = e.pageX
-    //   if (currentY == '') currentY = e.pageY
-    //   var ydiff = e.pageY - currentY
-    //   currentY = e.pageY
-    //   $('.parallax div').each(function(i, el) {
-    //     var movement = (i + 1) * (xdiff * movementConstant)
-    //     var movementy = (i + 1) * (ydiff * movementConstant)
-    //     var newX = $(el).position().left + movement
-    //     var newY = $(el).position().top + movementy
-    //     $(el).css('left', newX + 'px')
-    //     $(el).css('top', newY + 'px')
-    //   })
-    // })
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="css">
+.layer {
+  position: absolute;
+  display: block;
+  left: 100px;
+  top: 100px;
+}
+.birds {
+  background-image: url(https://raw.githubusercontent.com/burlakeugene/assets/master/eugeneburlak/layer-2.png);
+}
+.birds1 {
+  background-image: url(https://raw.githubusercontent.com/burlakeugene/assets/master/eugeneburlak/layer-1.png);
+}
+
 .parallax {
   position: absolute;
   width: 100%;
@@ -86,16 +79,16 @@ export default {
   background-repeat: no-repeat;
   background-position: top center;
 }
-.water-layer1 {
-  /* background-image: url(http://elikirk.com/demos/liquipel/images/water-layer-1.png); */
-  position: absolute;
-  left: 15%;
-  top: 100%;
+.parallax1 {
   background-image: url(https://raw.githubusercontent.com/burlakeugene/assets/master/eugeneburlak/layer-2.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
-.water-layer2 {
+.parallax2 {
   /* background-image: url(http://elikirk.com/demos/liquipel/images/water-layer-2.png); */
   background-image: url(https://raw.githubusercontent.com/burlakeugene/assets/master/eugeneburlak/layer-1.png);
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
 }
 .water-layer3 {
   /* background-image: url(http://elikirk.com/demos/liquipel/images/water-layer-3.png); */
